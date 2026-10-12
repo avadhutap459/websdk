@@ -1,0 +1,72 @@
+:host {
+  display: block;
+  font-family: Arial, sans-serif;
+  color: #262626;
+}
+
+.premium-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.premium-header {
+  background: #c8102e;
+  color: #fff;
+  padding: 18px 24px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.stepper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 18px 24px;
+  border-bottom: 1px solid #ddd;
+}
+
+.stepper span {
+  color: #777;
+}
+
+.stepper .active {
+  color: #c8102e;
+  font-weight: 700;
+}
+
+section {
+  padding: 24px;
+}
+
+button {
+  padding: 11px 20px;
+  border: 0;
+  border-radius: 4px;
+  margin: 8px 8px 8px 0;
+  background: #c8102e;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.premium-card {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  margin: 8px;
+  min-width: 160px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.error {
+  color: #b00020;
+  padding: 0 24px 16px;
+}

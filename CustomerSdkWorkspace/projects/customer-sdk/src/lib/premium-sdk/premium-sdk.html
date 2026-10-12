@@ -1,0 +1,77 @@
+<div class="premium-container">
+  <header class="premium-header">
+    SUD LIFE SARAL JEEVAN BIMA
+  </header>
+
+  <nav class="stepper">
+    <span [class.active]="currentStep >= 1">
+      1. Basic Information
+    </span>
+
+    <span [class.active]="currentStep >= 2">
+      2. Product Information
+    </span>
+
+    <span [class.active]="currentStep >= 3">
+      3. Summary
+    </span>
+  </nav>
+
+  <section *ngIf="currentStep === 1">
+    <h2>Basic Information</h2>
+    <p>Confirm the applicant and proposer details.</p>
+
+    <button type="button" (click)="next()">NEXT</button>
+  </section>
+
+  <section *ngIf="currentStep === 2">
+    <h2>Product Information</h2>
+    <p>Confirm the product, policy term and sum assured.</p>
+
+    <button type="button" (click)="back()">BACK</button>
+
+    <button
+      type="button"
+      (click)="viewSummary()"
+      [disabled]="loading">
+      {{ loading ? 'Calculating...' : 'VIEW SUMMARY' }}
+    </button>
+  </section>
+
+  <section *ngIf="currentStep === 3 && premiumResponse as response">
+  <h2>Premium Summary</h2>
+
+  <div class="premium-card">
+    <span>Annual Premium</span>
+    <strong>
+      {{ response.annualPremium | number:'1.0-2' }}
+    </strong>
+  </div>
+
+  <div class="premium-card">
+    <span>Installment Premium</span>
+    <strong>
+      {{ response.modalPremium | number:'1.0-2' }}
+    </strong>
+  </div>
+
+  <div class="premium-card">
+    <span>Tax</span>
+    <strong>
+      {{ response.tax | number:'1.0-2' }}
+    </strong>
+  </div>
+
+  <p>{{ response.message }}</p>
+
+  <button type="button" (click)="returnToWebApp()">
+    RETURN TO WEB APP
+  </button>
+</section>
+
+  <p *ngIf="loading">Please wait while the premium is calculated...</p>
+
+  <p *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </p>
+</div>
