@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #243247;
+  background: #f8fafc;
+}
+
+.webapp {
+  padding: 24px;
+}
+
+.sdk-card {
+  padding: 24px;
+  background: white;
+  border: 1px solid #e0e5ec;
+  border-radius: 10px;
+}
+
+.sdk-card button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 6px;
+  background: #c8102e;
+  color: white;
+  cursor: pointer;
+}
+
+.sdk-card button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.error {
+  color: #b42318;
+}
