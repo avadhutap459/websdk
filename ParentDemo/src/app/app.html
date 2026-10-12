@@ -1,0 +1,160 @@
+<main class="portal-container">
+
+  <header class="portal-header">
+    <div>
+      <h1>Customer Portal</h1>
+      <p>Premium calculation using our hosted Angular SDK</p>
+    </div>
+  </header>
+
+  <section class="panel">
+    <h2>Customer Basic Information</h2>
+    <p class="section-description">
+      Enter customer details and send them to the Premium SDK.
+    </p>
+
+    <div class="form-grid">
+
+      <div class="form-field">
+        <label for="customerId">Customer ID</label>
+        <input
+          id="customerId"
+          type="text"
+          [(ngModel)]="basicInfo.customerId"
+          name="customerId">
+      </div>
+
+      <div class="form-field">
+        <label for="firstName">First Name</label>
+        <input
+          id="firstName"
+          type="text"
+          [(ngModel)]="basicInfo.firstName"
+          name="firstName">
+      </div>
+
+      <div class="form-field">
+        <label for="lastName">Last Name</label>
+        <input
+          id="lastName"
+          type="text"
+          [(ngModel)]="basicInfo.lastName"
+          name="lastName">
+      </div>
+
+      <div class="form-field">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input
+          id="dateOfBirth"
+          type="date"
+          [(ngModel)]="basicInfo.dateOfBirth"
+          name="dateOfBirth">
+      </div>
+
+      <div class="form-field">
+        <label for="gender">Gender</label>
+        <select
+          id="gender"
+          [(ngModel)]="basicInfo.gender"
+          name="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email Address</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="basicInfo.email"
+          name="email">
+      </div>
+
+      <div class="form-field">
+        <label for="contactNumber">Contact Number</label>
+        <input
+          id="contactNumber"
+          type="tel"
+          [(ngModel)]="basicInfo.contactNumber"
+          name="contactNumber">
+      </div>
+
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="button"
+        class="primary-button"
+        (click)="sendBasicInformation()">
+        Send Information to SDK
+      </button>
+    </div>
+  </section>
+
+  <section class="panel" *ngIf="!premiumResult()">
+    <h2>Premium SDK</h2>
+    <p class="section-description">
+      Complete the premium calculation below.
+    </p>
+
+    <iframe
+      id="premiumFrame"
+      src="http://localhost:4300/premium"
+      title="Premium Calculation SDK"
+      width="100%"
+      height="800">
+    </iframe>
+  </section>
+
+  <section class="panel" *ngIf="premiumResult() as result">
+    <h2>Premium Summary</h2>
+    <p class="section-description">
+      Your premium calculation has been completed successfully.
+    </p>
+
+    <div class="summary-grid">
+
+      <article class="summary-card">
+        <span>Annual Premium</span>
+        <strong>
+          {{ result.annualPremium | number:'1.0-2' }}
+        </strong>
+      </article>
+
+      <article class="summary-card">
+        <span>Installment Premium</span>
+        <strong>
+          {{ result.modalPremium | number:'1.0-2' }}
+        </strong>
+      </article>
+
+      <article class="summary-card">
+        <span>Tax</span>
+        <strong>
+          {{ result.tax | number:'1.0-2' }}
+        </strong>
+      </article>
+
+    </div>
+
+    <div class="result-details">
+      <p *ngIf="result.status">
+        <strong>Status:</strong> {{ result.status }}
+      </p>
+
+      <p *ngIf="result.transactionId">
+        <strong>Transaction ID:</strong> {{ result.transactionId }}
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="primary-button"
+      (click)="premiumResult.set(null)">
+      Return to SDK
+    </button>
+  </section>
+
+</main>
