@@ -1,0 +1,11 @@
+<main style="padding: 20px;">
+  <h1>Premium SDK</h1>
+
+  <lib-premium-sdk
+    *ngIf="showSdk"
+    [request]="request"
+    (completed)="onCompleted($event)">
+  </lib-premium-sdk>
+
+ 
+</main>
